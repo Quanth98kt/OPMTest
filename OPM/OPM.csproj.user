@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="GUI\ContractCreatDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\ContractInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\DeliveryPlanInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\DPCreatDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\DPInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\GoodsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\HandlerExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\NotificationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\NTKTCreatDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\NTKTInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\OPMDASHBOARDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PLCreatDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PLInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\POCreatDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\POInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\SettingsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\SiteInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
