@@ -10,14 +10,14 @@
         "projectUniqueName": "D:\\OPMTest\\OPM\\OPM.csproj",
         "projectName": "OPM",
         "projectPath": "D:\\OPMTest\\OPM\\OPM.csproj",
-        "packagesPath": "C:\\Users\\tranq\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
         "outputPath": "D:\\OPMTest\\OPM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tranq\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -10,8 +10,8 @@ namespace OPM.DBHandler
     public static class OPMDBHandler
     {
 
-        //static string connectionSTR = @"Data Source=10.2.6.73;Initial Catalog=OpmDB;Persist Security Info=True;User ID=sa; Password = tranquan98.kt;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        static string connectionSTR = @"Data Source=ADMIN\ADMIN;Initial Catalog=OpmDB;Integrated Security=True";
+        static string connectionSTR = @"Data Source=10.2.6.73;Initial Catalog=OpmDB;Persist Security Info=True;User ID=sa; Password = tranquan98.kt;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //static string connectionSTR = @"Data Source=.;Initial Catalog=OpmDB;Integrated Security=True";
         //static string connectionSTR = @"Data Source=10.2.6.73;Initial Catalog=OpmDB;Persist Security Info=True;User ID=sa";
         //static string connectionSTR = @"Data Source = LEXUANTHANH\SQLEXPRESS;Initial Catalog = OpmDB1; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         //static string connectionSTR = @"Data Source=XUANTHANH;Initial Catalog=OpmDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";

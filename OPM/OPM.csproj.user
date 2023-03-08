@@ -55,7 +55,7 @@
     <Compile Update="GUI\SiteInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\Test.cs">
+    <Compile Update="GUI\PrintInfo.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

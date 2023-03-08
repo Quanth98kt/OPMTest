@@ -380,4 +380,4 @@ D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.genruntimeconfig.cache
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\PhanMemQuanLyNhaHang.fLogin.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.NotificationInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.SettingsInfo.resources
-D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.Test.resources
+D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.PrintInfo.resources

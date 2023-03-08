@@ -203,6 +203,16 @@ namespace OPM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap print_30px {
+            get {
+                object obj = ResourceManager.GetObject("print_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_25px {
             get {
                 object obj = ResourceManager.GetObject("save_25px", resourceCulture);
@@ -266,6 +276,16 @@ namespace OPM.Properties {
         internal static System.Drawing.Bitmap settings_35px {
             get {
                 object obj = ResourceManager.GetObject("settings_35px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap topic_push_notification_30px {
+            get {
+                object obj = ResourceManager.GetObject("topic_push_notification_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

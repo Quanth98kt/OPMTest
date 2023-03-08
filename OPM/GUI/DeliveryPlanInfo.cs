@@ -144,7 +144,7 @@ namespace OPM.GUI
 
             try
             {
-                if (!string.IsNullOrEmpty(textBoxDeliveryPlanQuantity.Text.Trim()) && double.Parse(textBoxDeliveryPlanQuantity.Text.Trim()) >= double.Parse(txtRemainingPOGoodsQuantity.Text.Trim()))
+                if (!string.IsNullOrEmpty(textBoxDeliveryPlanQuantity.Text.Trim()) && double.Parse(textBoxDeliveryPlanQuantity.Text.Trim()) > double.Parse(txtRemainingPOGoodsQuantity.Text.Trim()))
                 {
                     MessageBox.Show(string.Format("Nhập số lượng thiết bị trong khoảng từ 0 đến {0}!", txtRemainingPOGoodsQuantity.Text.Trim()));
                 }

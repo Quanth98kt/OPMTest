@@ -10,7 +10,7 @@ namespace OPM.GUI
 {
     public partial class NTKTInfo : Form
     {
-        public int a;
+        public string val;
         public NTKTInfo()
         {
             InitializeComponent();
@@ -120,20 +120,24 @@ namespace OPM.GUI
         }
         private void txbNTKTQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtNTKTQuantity.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtNTKTQuantity.Text.Trim()) )
+            {
                 try
                 {
-                    if (!string.IsNullOrEmpty(txtNTKTQuantity.Text.Trim()))
+                    val = (Tag as OPMDASHBOARDA).Ntkt.NTKTQuantity.ToString();
+                    if (!string.IsNullOrEmpty(txtNTKTQuantity.Text.Trim()) && txtNTKTQuantity.Text.Trim() != val)
                     {
                         (Tag as OPMDASHBOARDA).Ntkt.NTKTQuantity = double.Parse(txtNTKTQuantity.Text.Trim());
                         txtNTKTExtraQuantity.Text = Math.Round(double.Parse(txtNTKTQuantity.Text.Trim()) / 50, 0, MidpointRounding.AwayFromZero).ToString();
                         txtRemainingNTKTGoodsQuantity.Text = (double.Parse(txtNTKTQuantity.Text.Trim()) - NTKTObj.NTKTGoodsQuantityTotalByPOId((Tag as OPMDASHBOARDA).Ntkt.POId)).ToString();
+                        tb_SUMQuantity.Text = (int.Parse(txtNTKTQuantity.Text.Trim()) + int.Parse(txtNTKTExtraQuantity.Text.Trim())).ToString();
                     }
                 }
                 catch
                 {
                     MessageBox.Show("Nhập đúng Số lượng hàng chính dạng số!");
                 }
+            }
         }
         private void txtNTKTExtraQuantity_TextChanged(object sender, EventArgs e)
         {
@@ -142,6 +146,7 @@ namespace OPM.GUI
                 if (!string.IsNullOrEmpty(txtNTKTExtraQuantity.Text.Trim()))
                 {
                     (Tag as OPMDASHBOARDA).Ntkt.NTKTExtraQuantity = double.Parse(txtNTKTExtraQuantity.Text.Trim());
+                    tb_SUMQuantity.Text = (int.Parse(txtNTKTQuantity.Text.Trim()) + int.Parse(txtNTKTExtraQuantity.Text.Trim())).ToString();
                 }
             }
             catch

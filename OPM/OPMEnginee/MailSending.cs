@@ -80,5 +80,12 @@ namespace OPM.OPMEnginee
             return table;
         }
 
+        public static bool Notifi()
+        {
+            string query = string.Format("SELECT ContractId, N'aa', ContractGuaranteeDeadline FROM dbo.Contract WHERE ContractGuaranteeDeadline - 5 <= GETDATE() and ContractGuaranteeDeadline >= GETDATE() union all SELECT ContractId, POId, POGuaranteeDate FROM dbo.PO WHERE POGuaranteeDate - 5 <= GETDATE() and POGuaranteeDate >= GETDATE() union all SELECT ContractId, POId, POAdvanceGuaranteeCreatedDate FROM dbo.PO WHERE POAdvanceGuaranteeCreatedDate - 5 <= GETDATE() and POAdvanceGuaranteeCreatedDate >= GETDATE() union all SELECT ContractId, POId, POOfferToGuaranteePOWarrantyDate FROM dbo.PO WHERE POOfferToGuaranteePOWarrantyDate - 5 <= GETDATE() and POOfferToGuaranteePOWarrantyDate >= GETDATE() union all SELECT ContractId, POId, POConfirmRequestDeadline FROM dbo.PO WHERE POConfirmRequestDeadline - 5 <= GETDATE() and POConfirmRequestDeadline >= GETDATE()");
+            DataTable table = OPMDBHandler.ExecuteQuery(query);
+            return table.Rows.Count > 0;
+        }
+
     }
 }

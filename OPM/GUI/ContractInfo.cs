@@ -1,6 +1,7 @@
 ﻿using OPM.OPMEnginee;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 namespace OPM.GUI
@@ -54,6 +55,18 @@ namespace OPM.GUI
             dateTimePickerContractLiquidationRecordsDate.Value = contract.ContractLiquidationRecordsDate;
             textBoxContractTotalAmountPaid.Text = contract.ContractTotalAmountPaid.ToString();
 
+        }
+
+        private void test()
+        {
+            if (MailSending.Notifi())
+            {
+                btnNotification.Image = new Bitmap(Application.StartupPath + "\\Resources\\topic_push_notification_30px.png"); ;
+            }
+            else
+            {
+                btnNotification.Image = new Bitmap(Application.StartupPath + "\\Resources\\notification_35px.png"); ;
+            }
         }
 
         private void LoadSiteA()
@@ -158,6 +171,7 @@ namespace OPM.GUI
         {
             LoadData();
             LoadSiteA();
+            test();
         }
 
         private void BtnAnnex_Click(object sender, EventArgs e)
@@ -343,9 +357,9 @@ namespace OPM.GUI
             this.Show();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            Test f = new Test();
+            PrintInfo f = new PrintInfo();
             f.ShowDialog();
             this.Show();
         }

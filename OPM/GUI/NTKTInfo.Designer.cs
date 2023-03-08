@@ -206,6 +206,7 @@ namespace OPM.GUI
             this.txtNTKTExtraQuantity.Name = "txtNTKTExtraQuantity";
             this.txtNTKTExtraQuantity.Size = new System.Drawing.Size(365, 29);
             this.txtNTKTExtraQuantity.TabIndex = 11;
+            this.txtNTKTExtraQuantity.TextChanged += new System.EventHandler(this.txtNTKTExtraQuantity_TextChanged);
             // 
             // label16
             // 

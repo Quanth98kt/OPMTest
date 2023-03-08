@@ -32,7 +32,7 @@ namespace OPM.GUI
                 pb.Height = 90;
 
                 Label lb = new Label();
-                lb.Text = string.Format("[Hợp đồng]: {0} \n                    Ngày hết hạn bảo lãnh: {1} \n                    Còn lại: {2} ngày {3} giờ", dataRow[0], DateTime.Parse(dataRow[1].ToString()).ToString("dd/MM/yyyy"), (DateTime.Parse(dataRow[1].ToString()) - DateTime.Now).ToString("dd"), (DateTime.Parse(dataRow[1].ToString()) - DateTime.Now).ToString("hh"));
+                lb.Text = string.Format("[Hợp đồng]: {0} \n                    Ngày hết hạn bảo lãnh hợp đồng: {1} \n                    Còn lại: {2} ngày {3} giờ", dataRow[0], DateTime.Parse(dataRow[1].ToString()).ToString("dd/MM/yyyy"), (DateTime.Parse(dataRow[1].ToString()) - DateTime.Now).ToString("dd"), (DateTime.Parse(dataRow[1].ToString()) - DateTime.Now).ToString("hh"));
                 lb.Font = new Font(lb.Font.FontFamily, 13);
                 lb.Width = flPn.Width - pb.Width - 30;
                 lb.Height = 90;

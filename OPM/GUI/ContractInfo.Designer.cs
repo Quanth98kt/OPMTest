@@ -88,7 +88,7 @@ namespace OPM.GUI
             this.btnNewPO = new System.Windows.Forms.Button();
             this.btnNotification = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -876,16 +876,16 @@ namespace OPM.GUI
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // btnTest
+            // btnPrint
             // 
-            this.btnTest.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnTest.Image = global::OPM.Properties.Resources.notification_35px;
-            this.btnTest.Location = new System.Drawing.Point(843, -1);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(40, 40);
-            this.btnTest.TabIndex = 12;
-            this.btnTest.UseVisualStyleBackColor = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.btnPrint.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPrint.Image = global::OPM.Properties.Resources.print_30px;
+            this.btnPrint.Location = new System.Drawing.Point(1001, -1);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(40, 40);
+            this.btnPrint.TabIndex = 12;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // ContractInfo
             // 
@@ -895,7 +895,7 @@ namespace OPM.GUI
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1164, 888);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnNotification);
             this.Controls.Add(this.btnNew);
@@ -976,6 +976,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnNewPO;
         private System.Windows.Forms.Button btnNotification;
         private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
