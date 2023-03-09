@@ -32,21 +32,21 @@ namespace OPM.GUI
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.cbCheckAdmin = new System.Windows.Forms.CheckBox();
+            this.tbRePassWord = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbPassWord = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbPhone = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbFullName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -67,7 +67,7 @@ namespace OPM.GUI
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,7 +87,7 @@ namespace OPM.GUI
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.dgvUsers);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -98,52 +98,53 @@ namespace OPM.GUI
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.cbCheckAdmin);
+            this.panel1.Controls.Add(this.tbRePassWord);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.tbPassWord);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.tbUserName);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.tbPhone);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.tbEmail);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.tbFullName);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(458, 6);
+            this.panel1.Location = new System.Drawing.Point(553, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(551, 594);
+            this.panel1.Size = new System.Drawing.Size(456, 594);
             this.panel1.TabIndex = 3;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.BackColor = System.Drawing.Color.Salmon;
-            this.button1.Location = new System.Drawing.Point(451, 392);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 39);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.Salmon;
+            this.btnSave.Location = new System.Drawing.Point(354, 392);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(97, 39);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // checkBox1
+            // cbCheckAdmin
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(3, 320);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(160, 25);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Tài khoản Admin    ";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbCheckAdmin.AutoSize = true;
+            this.cbCheckAdmin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbCheckAdmin.Location = new System.Drawing.Point(3, 320);
+            this.cbCheckAdmin.Name = "cbCheckAdmin";
+            this.cbCheckAdmin.Size = new System.Drawing.Size(160, 25);
+            this.cbCheckAdmin.TabIndex = 13;
+            this.cbCheckAdmin.Text = "Tài khoản Admin    ";
+            this.cbCheckAdmin.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // tbRePassWord
             // 
-            this.textBox6.Location = new System.Drawing.Point(148, 265);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(400, 29);
-            this.textBox6.TabIndex = 12;
+            this.tbRePassWord.Location = new System.Drawing.Point(148, 265);
+            this.tbRePassWord.Name = "tbRePassWord";
+            this.tbRePassWord.Size = new System.Drawing.Size(303, 29);
+            this.tbRePassWord.TabIndex = 12;
+            this.tbRePassWord.UseSystemPasswordChar = true;
             // 
             // label6
             // 
@@ -154,12 +155,13 @@ namespace OPM.GUI
             this.label6.TabIndex = 11;
             this.label6.Text = "Nhập lại mật khẩu:";
             // 
-            // textBox5
+            // tbPassWord
             // 
-            this.textBox5.Location = new System.Drawing.Point(148, 215);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(400, 29);
-            this.textBox5.TabIndex = 10;
+            this.tbPassWord.Location = new System.Drawing.Point(148, 215);
+            this.tbPassWord.Name = "tbPassWord";
+            this.tbPassWord.Size = new System.Drawing.Size(303, 29);
+            this.tbPassWord.TabIndex = 10;
+            this.tbPassWord.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -170,12 +172,12 @@ namespace OPM.GUI
             this.label5.TabIndex = 9;
             this.label5.Text = "Mật khẩu:";
             // 
-            // textBox4
+            // tbUserName
             // 
-            this.textBox4.Location = new System.Drawing.Point(148, 165);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(400, 29);
-            this.textBox4.TabIndex = 8;
+            this.tbUserName.Location = new System.Drawing.Point(148, 165);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(303, 29);
+            this.tbUserName.TabIndex = 8;
             // 
             // label4
             // 
@@ -186,12 +188,12 @@ namespace OPM.GUI
             this.label4.TabIndex = 7;
             this.label4.Text = "Tên đăng nhập:";
             // 
-            // textBox3
+            // tbPhone
             // 
-            this.textBox3.Location = new System.Drawing.Point(148, 115);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(400, 29);
-            this.textBox3.TabIndex = 6;
+            this.tbPhone.Location = new System.Drawing.Point(148, 115);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(303, 29);
+            this.tbPhone.TabIndex = 6;
             // 
             // label3
             // 
@@ -202,12 +204,12 @@ namespace OPM.GUI
             this.label3.TabIndex = 5;
             this.label3.Text = "Số điện thoại:";
             // 
-            // textBox2
+            // tbEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(148, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(400, 29);
-            this.textBox2.TabIndex = 4;
+            this.tbEmail.Location = new System.Drawing.Point(148, 65);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(303, 29);
+            this.tbEmail.TabIndex = 4;
             // 
             // label2
             // 
@@ -218,12 +220,12 @@ namespace OPM.GUI
             this.label2.TabIndex = 3;
             this.label2.Text = "Email ANSV:";
             // 
-            // textBox1
+            // tbFullName
             // 
-            this.textBox1.Location = new System.Drawing.Point(148, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 29);
-            this.textBox1.TabIndex = 2;
+            this.tbFullName.Location = new System.Drawing.Point(148, 15);
+            this.tbFullName.Name = "tbFullName";
+            this.tbFullName.Size = new System.Drawing.Size(303, 29);
+            this.tbFullName.TabIndex = 2;
             // 
             // label1
             // 
@@ -234,19 +236,19 @@ namespace OPM.GUI
             this.label1.TabIndex = 1;
             this.label1.Text = "Họ và tên:";
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(446, 594);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Location = new System.Drawing.Point(6, 6);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.RowTemplate.Height = 25;
+            this.dgvUsers.Size = new System.Drawing.Size(541, 594);
+            this.dgvUsers.TabIndex = 0;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -271,19 +273,19 @@ namespace OPM.GUI
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.textBox12);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Location = new System.Drawing.Point(458, 6);
+            this.panel2.Location = new System.Drawing.Point(553, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(551, 594);
-            this.panel2.TabIndex = 4;
+            this.panel2.Size = new System.Drawing.Size(456, 594);
+            this.panel2.TabIndex = 6;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Salmon;
-            this.button2.Location = new System.Drawing.Point(451, 392);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button2.Location = new System.Drawing.Point(354, 392);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 39);
             this.button2.TabIndex = 14;
-            this.button2.Text = "Save";
+            this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // checkBox2
@@ -301,8 +303,9 @@ namespace OPM.GUI
             // 
             this.textBox7.Location = new System.Drawing.Point(148, 265);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(400, 29);
+            this.textBox7.Size = new System.Drawing.Size(303, 29);
             this.textBox7.TabIndex = 12;
+            this.textBox7.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -317,8 +320,9 @@ namespace OPM.GUI
             // 
             this.textBox8.Location = new System.Drawing.Point(148, 215);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(400, 29);
+            this.textBox8.Size = new System.Drawing.Size(303, 29);
             this.textBox8.TabIndex = 10;
+            this.textBox8.UseSystemPasswordChar = true;
             // 
             // label8
             // 
@@ -333,7 +337,7 @@ namespace OPM.GUI
             // 
             this.textBox9.Location = new System.Drawing.Point(148, 165);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(400, 29);
+            this.textBox9.Size = new System.Drawing.Size(303, 29);
             this.textBox9.TabIndex = 8;
             // 
             // label9
@@ -349,7 +353,7 @@ namespace OPM.GUI
             // 
             this.textBox10.Location = new System.Drawing.Point(148, 115);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(400, 29);
+            this.textBox10.Size = new System.Drawing.Size(303, 29);
             this.textBox10.TabIndex = 6;
             // 
             // label10
@@ -365,7 +369,7 @@ namespace OPM.GUI
             // 
             this.textBox11.Location = new System.Drawing.Point(148, 65);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(400, 29);
+            this.textBox11.Size = new System.Drawing.Size(303, 29);
             this.textBox11.TabIndex = 4;
             // 
             // label11
@@ -381,7 +385,7 @@ namespace OPM.GUI
             // 
             this.textBox12.Location = new System.Drawing.Point(148, 15);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(400, 29);
+            this.textBox12.Size = new System.Drawing.Size(303, 29);
             this.textBox12.TabIndex = 2;
             // 
             // label12
@@ -398,7 +402,7 @@ namespace OPM.GUI
             this.pictureBox1.Image = global::OPM.Properties.Resources._6386976;
             this.pictureBox1.Location = new System.Drawing.Point(3, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(452, 594);
+            this.pictureBox1.Size = new System.Drawing.Size(544, 594);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -415,7 +419,7 @@ namespace OPM.GUI
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -430,21 +434,21 @@ namespace OPM.GUI
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbRePassWord;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbPassWord;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbFullName;
+        private System.Windows.Forms.CheckBox cbCheckAdmin;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;

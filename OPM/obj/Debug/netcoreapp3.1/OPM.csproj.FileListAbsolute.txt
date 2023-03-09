@@ -330,12 +330,6 @@ D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\OPM.dll
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\OPM.pdb
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\ExcelDataReader.dll
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\ExcelDataReader.DataSet.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.Barcode.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.Doc.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.Email.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.Pdf.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.Presentation.dll
-D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Spire.XLS.dll
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Syncfusion.Compression.Base.dll
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Syncfusion.Licensing.dll
 D:\OPMTest\OPM\bin\Debug\netcoreapp3.1\Syncfusion.XlsIO.Base.dll
@@ -377,7 +371,7 @@ D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.csproj.CopyComplete
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.dll
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.pdb
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.genruntimeconfig.cache
-D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\PhanMemQuanLyNhaHang.fLogin.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.NotificationInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.SettingsInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.PrintInfo.resources
+D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.fLogin.resources

@@ -1,4 +1,4 @@
-﻿namespace PhanMemQuanLyNhaHang
+﻿namespace OPM.GUI
 {
     partial class fLogin
     {
@@ -142,6 +142,7 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             this.btnLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctrl_KeyDown);
             // 
             // fLogin

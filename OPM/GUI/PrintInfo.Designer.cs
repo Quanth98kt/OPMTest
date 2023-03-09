@@ -63,7 +63,7 @@ namespace OPM.GUI
             // 
             this.btnExcelPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnExcelPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnExcelPrint.Location = new System.Drawing.Point(791, 570);
+            this.btnExcelPrint.Location = new System.Drawing.Point(778, 570);
             this.btnExcelPrint.Name = "btnExcelPrint";
             this.btnExcelPrint.Size = new System.Drawing.Size(101, 63);
             this.btnExcelPrint.TabIndex = 1;

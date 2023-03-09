@@ -1,5 +1,4 @@
-﻿using DGVPrinterHelper;
-using OPM.ExcelHandler;
+﻿using OPM.ExcelHandler;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +16,7 @@ namespace OPM.GUI
     public partial class PrintInfo : Form
     {
         FolderBrowserDialog fbd = new FolderBrowserDialog();
+        public List<string> listSheets { get; set; } = new List<string>();
         public PrintInfo()
         {
             InitializeComponent();
@@ -42,8 +42,16 @@ namespace OPM.GUI
                 {
                     string[] files = Directory.GetFiles(fbd.SelectedPath);
 
-                    List<string> list = new List<string>(files);
+                    List<string> list = new List<string>();
 
+                    foreach (string f in Directory.GetFiles(fbd.SelectedPath))
+                    {
+                        if (f.ToLower().EndsWith(".xlsx") == true || f.ToLower().EndsWith(".xlsm") == true || f.ToLower().EndsWith(".xls") == true)
+                        {
+                            list.Add(f);
+
+                        }
+                    }
                     //Datagridview
                     foreach (string item in list)
                     {
@@ -58,7 +66,6 @@ namespace OPM.GUI
                     printDlg.Document = printDoc;
                     printDlg.AllowSelection = true;
                     printDlg.AllowSomePages = true;
-                    //Call ShowDialog
                     if (printDlg.ShowDialog() == DialogResult.OK)
                     {
                         //Print
@@ -93,7 +100,7 @@ namespace OPM.GUI
             }
             catch
             {
-
+                MessageBox.Show("Lỗi nguồn dữ liệu!");
             }
         }
 
@@ -109,7 +116,16 @@ namespace OPM.GUI
                 {
                     string[] files = Directory.GetFiles(fbd.SelectedPath);
 
-                    List<string> list = new List<string>(files);
+                    List<string> list = new List<string>();
+
+                    foreach (string f in Directory.GetFiles(fbd.SelectedPath))
+                    {
+                        if (f.ToLower().EndsWith(".doc") == true || f.ToLower().EndsWith(".docx") == true)
+                        {
+                            list.Add(f);
+
+                        }
+                    }
 
                     //Datagridview
                     foreach (string item in list)
@@ -125,51 +141,27 @@ namespace OPM.GUI
                     printDlg.Document = printDoc;
                     printDlg.AllowSelection = true;
                     printDlg.AllowSomePages = true;
-                    //Call ShowDialog
                     if (printDlg.ShowDialog() == DialogResult.OK)
                     {
                         //Print
                         foreach (string item in list)
                         {
-                            // On déclare l'application
                             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
 
-                            // Microsoft.Office.Interop.Excel.Workbook wb = app.Workbooks.Open
                             Microsoft.Office.Interop.Word.Document wordDoc = app.Documents.Open(item, Type.Missing, true,
                                     Type.Missing, Type.Missing, Type.Missing,
                                     Type.Missing, Type.Missing, Type.Missing,
                                     Type.Missing, Type.Missing, Type.Missing,
                                     Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
-                            // On ouvre la première feuille :
-                            // la numérotation commence à 1 et pas à 0 ici
-
                             Microsoft.Office.Interop.Word.Document ws = (Microsoft.Office.Interop.Word.Document)wordDoc;
 
-                            // Utiliser la Mise en page avec PageSetup
-                            // Les entêtes de ligne et de colonne sont à répéter sur toutes les pages :
-                            //ws.PageSetup.PrintTitleColumns = "$A:$B";
-                            //ws.PageSetup.PrintTitleRows = "$1:$2";
-                            //wordDoc.PageSetup.PrintHeadings = false;
-                            //ws.PageSetup.BlackAndWhite = false;
-                            //ws.PageSetup.PrintGridlines = false;
-
-                            // Lancement de l'impression par défaut
-
                             wordDoc.PrintOut(Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                            //printDoc.Print();
 
-
-                            // Afficher l’application Excel
                             app.Visible = false;
 
-                            // Fermer l'application Excel
-                            //wb.Save();
                             wordDoc.Close(false, Type.Missing, Type.Missing);
                             app.Quit();
-
-                            // Réinitialise l'application
-                            //chemin.Text = "Imprimé !";
                         }
 
                     }
@@ -177,11 +169,9 @@ namespace OPM.GUI
             }
             catch
             {
-
+                MessageBox.Show("Lỗi nguồn dữ liệu!");
             }
         }
-
-        public List<string> listSheets { get; set; } = new List<string>();
 
         private void tbnSheet_TextChanged(object sender, EventArgs e)
         {
@@ -189,5 +179,7 @@ namespace OPM.GUI
 
             listSheets = new List<string>(listSheet);
         }
+
+        
     }
 }

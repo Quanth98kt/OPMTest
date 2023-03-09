@@ -347,14 +347,17 @@ namespace OPM.GUI
                 else
                     (Tag as OPMDASHBOARDA).Dp.DPQuantity1 = 0;
 
-                if ((Tag as OPMDASHBOARDA).Dp.DPType == 0)
+                if (!string.IsNullOrEmpty(textBoxDPQuantity1.Text.Trim()))
                 {
-                    
-                    txtRemainingPOGoodsQuantity.Text = ((Tag as OPMDASHBOARDA).Po.POGoodsQuantity - DPObj.DPGetTotalQuantityByPOId((Tag as OPMDASHBOARDA).Po.POId) - int.Parse(textBoxDPQuantity1.Text.Trim())).ToString();
-                }
-                else
-                {
-                    txtRemainingPOGoodsQuantity.Text = ((Tag as OPMDASHBOARDA).Po.POSpareGoodsQuantity - DPObj.DPGetTotalSpareQuantityByPOId((Tag as OPMDASHBOARDA).Po.POId) - int.Parse(textBoxDPQuantity1.Text.Trim())).ToString();
+                    if ((Tag as OPMDASHBOARDA).Dp.DPType == 0)
+                    {
+
+                        txtRemainingPOGoodsQuantity.Text = ((Tag as OPMDASHBOARDA).Po.POGoodsQuantity - DPObj.DPGetTotalQuantityByPOId((Tag as OPMDASHBOARDA).Po.POId) - int.Parse(textBoxDPQuantity1.Text.Trim())).ToString();
+                    }
+                    else
+                    {
+                        txtRemainingPOGoodsQuantity.Text = ((Tag as OPMDASHBOARDA).Po.POSpareGoodsQuantity - DPObj.DPGetTotalSpareQuantityByPOId((Tag as OPMDASHBOARDA).Po.POId) - int.Parse(textBoxDPQuantity1.Text.Trim())).ToString();
+                    }
                 }
             }
             catch

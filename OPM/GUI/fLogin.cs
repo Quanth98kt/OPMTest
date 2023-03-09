@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OPM.OPMEnginee;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PhanMemQuanLyNhaHang
+namespace OPM.GUI
 {
     public partial class fLogin : Form
     {
@@ -35,6 +36,23 @@ namespace PhanMemQuanLyNhaHang
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            string passWord = txbPassWord.Text;
+            if (Settings.Login(userName, passWord))
+            {
+                OPMDASHBOARDA f = new OPMDASHBOARDA();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!", "Thông báo");
             }
         }
     }

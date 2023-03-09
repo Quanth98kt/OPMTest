@@ -52,10 +52,6 @@
               "target": "Package",
               "version": "[3.6.0, )"
             },
-            "Spire.Office": {
-              "target": "Package",
-              "version": "[7.5.4, )"
-            },
             "Syncfusion.XlsIO.WinForms": {
               "target": "Package",
               "version": "[20.1.0.59, )"
