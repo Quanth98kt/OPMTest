@@ -49,13 +49,13 @@
     <Compile Update="GUI\POInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\PrintInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\SettingsInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\SiteInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="GUI\PrintInfo.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

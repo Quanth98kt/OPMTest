@@ -37,6 +37,9 @@ namespace OPM.GUI
             this.tbnSheet = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPrintPDF = new System.Windows.Forms.Button();
+            this.btnPicturePrint = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvName)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -125,11 +128,50 @@ namespace OPM.GUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Chọn Sheet cần in:";
             // 
+            // btnPrintPDF
+            // 
+            this.btnPrintPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnPrintPDF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPrintPDF.Location = new System.Drawing.Point(916, 501);
+            this.btnPrintPDF.Name = "btnPrintPDF";
+            this.btnPrintPDF.Size = new System.Drawing.Size(101, 63);
+            this.btnPrintPDF.TabIndex = 3;
+            this.btnPrintPDF.Text = "PDF Print";
+            this.btnPrintPDF.UseVisualStyleBackColor = false;
+            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
+            // 
+            // btnPicturePrint
+            // 
+            this.btnPicturePrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnPicturePrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPicturePrint.Location = new System.Drawing.Point(778, 501);
+            this.btnPicturePrint.Name = "btnPicturePrint";
+            this.btnPicturePrint.Size = new System.Drawing.Size(101, 63);
+            this.btnPicturePrint.TabIndex = 4;
+            this.btnPicturePrint.Text = "Picture Print";
+            this.btnPicturePrint.UseVisualStyleBackColor = false;
+            this.btnPicturePrint.Click += new System.EventHandler(this.btnPicturePrint_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(692, 165);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(249, 51);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Lưu ý: \r\nCài đặt Adobe Reader trước khi Print PDF\r\nLink: https://get.adobe.com/re" +
+    "ader/";
+            // 
             // PrintInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 645);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnPicturePrint);
+            this.Controls.Add(this.btnPrintPDF);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnWordPrint);
             this.Controls.Add(this.btnExcelPrint);
@@ -141,6 +183,7 @@ namespace OPM.GUI
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -154,5 +197,8 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox tbnSheet;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPrintPDF;
+        private System.Windows.Forms.Button btnPicturePrint;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -10,6 +10,7 @@ using ExcelOffice = Microsoft.Office.Interop.Excel;
 using WordOffice = Microsoft.Office.Interop.Word;
 using System.Drawing.Printing;
 using System.IO;
+using System.Diagnostics;
 
 namespace OPM.GUI
 {
@@ -173,6 +174,146 @@ namespace OPM.GUI
             }
         }
 
+        private void btnPrintPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvName.Rows.Clear();
+
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+
+                    List<string> list = new List<string>();
+
+                    foreach (string f in Directory.GetFiles(fbd.SelectedPath))
+                    {
+                        if (f.ToLower().EndsWith(".pdf") == true)
+                        {
+                            list.Add(f);
+
+                        }
+                    }
+
+                    //Datagridview
+                    foreach (string item in list)
+                    {
+                        //Datagridview
+                        string Filename = Path.GetFileName(item);
+                        this.dgvName.Rows.Add(Filename);
+                    }
+
+                    PrintDialog printDlg = new PrintDialog();
+                    PrintDocument printDoc = new PrintDocument();
+                    printDoc.DocumentName = "fileName";
+                    printDlg.Document = printDoc;
+                    printDlg.AllowSelection = true;
+                    printDlg.AllowSomePages = true;
+
+                    string pathToExecutable = @"C:\Program Files (x86)\Adobe\Reader 11.0\Reader\AcroRd32.exe";
+
+                    const string flagNoSplashScreen = "/s";
+                    const string flagOpenMinimized = "/h";
+
+                    if (printDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        //Print
+                        foreach (string item in list)
+                        {
+                            var flagPrintFileToPrinter = string.Format("/t \"{0}\" \"{1}\"", item, printDlg.PrinterSettings.PrinterName);
+                            var args = string.Format("{0} {1} {2}", flagNoSplashScreen, flagOpenMinimized, flagPrintFileToPrinter);
+
+                            string processFilename = Microsoft.Win32.Registry.LocalMachine
+                                 .OpenSubKey("Software")
+                                 .OpenSubKey("Microsoft")
+                                 .OpenSubKey("Windows")
+                                 .OpenSubKey("CurrentVersion")
+                                 .OpenSubKey("App Paths")
+                                 .OpenSubKey("AcroRd32.exe")
+                                 .GetValue(String.Empty).ToString();
+
+                            Process p = new Process();
+                            p.StartInfo.UseShellExecute = false;
+                            p.StartInfo.CreateNoWindow = true;
+                            p.StartInfo.UseShellExecute = false;
+                            p.StartInfo.FileName = processFilename;
+                            p.StartInfo.RedirectStandardError = true;
+                            p.StartInfo.Arguments = args;
+                            p.Start();
+                            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            p.EnableRaisingEvents = true;
+                            p.CloseMainWindow();
+                            p.Close();
+                        }
+
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi nguồn dữ liệu!");
+            }
+        }
+
+        private void btnPicturePrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvName.Rows.Clear();
+
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+
+                    List<string> list = new List<string>();
+
+                    foreach (string f in Directory.GetFiles(fbd.SelectedPath))
+                    {
+                        if (f.ToLower().EndsWith(".jfif") == true || f.ToLower().EndsWith(".jpg") == true || f.ToLower().EndsWith(".jpeg") == true || f.ToLower().EndsWith(".png") == true || f.ToLower().EndsWith(".gif") == true || f.ToLower().EndsWith(".tiff") == true || f.ToLower().EndsWith(".raw") == true)
+                        {
+                            list.Add(f);
+
+                        }
+                    }
+
+                    //Datagridview
+                    foreach (string item in list)
+                    {
+                        //Datagridview
+                        string Filename = Path.GetFileName(item);
+                        this.dgvName.Rows.Add(Filename);
+                    }
+
+                    PrintDialog printDlg = new PrintDialog();
+                    PrintDocument printDoc = new PrintDocument();
+                    printDoc.DocumentName = "fileName";
+                    printDlg.Document = printDoc;
+                    printDlg.AllowSelection = true;
+                    printDlg.AllowSomePages = true;
+                    if (printDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        //Print
+                        foreach (string item in list)
+                        {
+                            PrintDocument pd = new PrintDocument();
+                            a = item;
+                            pd.PrintPage += PrintPage;
+                            pd.Print();
+                        }
+
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi nguồn dữ liệu!");
+            }
+        }
+
         private void tbnSheet_TextChanged(object sender, EventArgs e)
         {
             string[] listSheet = tbnSheet.Text.Split(',');
@@ -180,6 +321,12 @@ namespace OPM.GUI
             listSheets = new List<string>(listSheet);
         }
 
-        
+        string a;
+        private void PrintPage(object o, PrintPageEventArgs e)
+        {
+            System.Drawing.Image img = System.Drawing.Image.FromFile(a);
+            Point loc = new Point(0, 0);
+            e.Graphics.DrawImage(img, loc);
+        }
     }
 }
