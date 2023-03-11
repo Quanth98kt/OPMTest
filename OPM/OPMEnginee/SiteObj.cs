@@ -251,5 +251,12 @@ namespace OPM.OPMEnginee
             string tem = (tem1 == null || tem1 == DBNull.Value) ? "VNPTId" : (string)tem1;
             return tem;
         }
+
+        public static DataTable SiteName_NonUnicode()
+        {
+            string query = string.Format("SELECT SiteName_NonUnicode FROM dbo.Site");
+            DataTable table = OPMDBHandler.ExecuteQuery(query);
+            return table;
+        }
     }
 }

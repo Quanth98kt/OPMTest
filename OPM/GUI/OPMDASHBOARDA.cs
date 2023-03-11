@@ -476,58 +476,6 @@ namespace OPM.GUI
                 }
                 OpenChildFormByNodeName(currentNodeName);
             }
-            /*else
-            {
-                CatalogAdmin.searchTable(tb_search.Text.Trim());
-                DataTable table = CatalogAdmin.searchTable(tb_search.Text.Trim());
-                DataRow row = table.NewRow();
-                row["ctlId"] = currentNodeName;
-                if (currentNodeName == "Contract_" + (new ContractObj()).ContractId)
-                {
-                    row["ctlName"] = (new ContractObj()).ContractId;
-                    table.Rows.Add(row);
-                }
-                if (currentNodeName == "PO_" + (new POObj()).POId)
-                {
-                    row["ctlName"] = (new POObj()).POName;
-                    row["ctlParent"] = "Contract_" + Contract.ContractId;
-                    table.Rows.Add(row);
-                }
-                if (currentNodeName == "NTKT_" + (new NTKTObj()).NTKTId)
-                {
-                    row["ctlName"] = "NTKT " + Ntkt.NTKTPhase;
-                    row["ctlParent"] = "PO_" + Po.POId;
-                    table.Rows.Add(row);
-                }
-                if (currentNodeName == "DP_" + (new DPObj()).DPId)
-                {
-                    row["ctlName"] = "DP " + Dp.DPId;
-                    row["ctlParent"] = "PO_" + Po.POId;
-                    table.Rows.Add(row);
-                }
-                if (currentNodeName == "PL_" + (new PLObj()).PLId)
-                {
-                    row["ctlName"] = "PL " + Pl.VNPTId;
-                    row["ctlParent"] = "DP_" + Dp.DPId;
-                    table.Rows.Add(row);
-                }
-
-                treeViewOPM.Nodes.Clear();
-                InitCatalogAdmin(null, null, table);
-                List<string> list = CatalogAdmin.PathToContractNodeFromCurrentNode(currentNodeName, table);
-                list.Reverse();
-                treeViewOPM.SelectedNode = treeViewOPM.Nodes[list[0]];
-                treeViewOPM.SelectedNode.Expand();
-                treeViewOPM.SelectedNode.ForeColor = Color.Blue;
-                for (int i = 1; i <= list.Count - 1; i++)
-                {
-                    treeViewOPM.SelectedNode = treeViewOPM.SelectedNode.Nodes[list[i]];
-                    treeViewOPM.SelectedNode.Expand();
-                    treeViewOPM.SelectedNode.ForeColor = Color.Blue;
-                }
-                OpenChildFormByNodeName(currentNodeName);
-            }
-            */
         }
         
         private void InitCatalogAdmin(TreeNode parentNode, string parent, DataTable table)
