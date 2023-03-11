@@ -27,7 +27,7 @@ namespace OPM.OPMEnginee
 
         public static DataTable Table()
         {
-            string query = string.Format("(SELECT ('Contract_'+ContractId)AS ctlId, ContractId AS ctlName, null AS ctlParent FROM dbo.Contract) UNION (SELECT 'PO_'+POId,POName, 'Contract_'+ContractId FROM dbo.PO) UNION (SELECT 'NTKT_'+NTKTId,'NTKT '+ NTKTPhase,'PO_'+POId FROM dbo.NTKT) UNION (SELECT 'DP_'+DPId,'DP '+DPId,'PO_'+POId FROM dbo.DP) UNION (SELECT 'PL_'+PLId,'PL '+VNPTId,'DP_'+DPId FROM dbo.PL) ORDER BY ContractId");
+            string query = string.Format("(SELECT ('Contract_'+ContractId)AS ctlId, ContractId AS ctlName, null AS ctlParent FROM dbo.Contract) UNION (SELECT 'PO_'+POId,POName, 'Contract_'+ContractId FROM dbo.PO) UNION (SELECT 'NTKT_'+NTKTId,'NTKT '+ NTKTPhase,'PO_'+POId FROM dbo.NTKT) UNION (SELECT 'DP_'+DPId,'DP '+DPId,'PO_'+POId FROM dbo.DP) UNION (SELECT 'PL_'+PLId,'PL '+ VNPTId + PLCheckMainLine,'DP_'+DPId FROM dbo.PL) ORDER BY ContractId");
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             DataTable table1 = new DataTable();
             table1.Columns.Add("ctlId");
@@ -38,7 +38,7 @@ namespace OPM.OPMEnginee
 
         public static DataTable searchTable(string txtsearch)
         {
-            string query = string.Format("(SELECT ('Contract_'+ContractId) AS ctlId, ContractId AS ctlName, null AS ctlParent FROM dbo.Contract where ContractId like '%{0}%') UNION (SELECT 'PO_' + POId, POName, 'Contract_' + ContractId FROM dbo.PO ) UNION (SELECT 'NTKT_' + NTKTId, 'NTKT ' + NTKTPhase, 'PO_' + POId FROM dbo.NTKT) UNION (SELECT 'DP_' + DPId, 'DP ' + DPId, 'PO_' + POId FROM dbo.DP) UNION (SELECT 'PL_' + PLId, 'PL ' + VNPTId, 'DP_' + DPId FROM dbo.PL) ORDER BY ContractId", txtsearch);
+            string query = string.Format("(SELECT ('Contract_'+ContractId) AS ctlId, ContractId AS ctlName, null AS ctlParent FROM dbo.Contract where ContractId like '%{0}%') UNION (SELECT 'PO_' + POId, POName, 'Contract_' + ContractId FROM dbo.PO ) UNION (SELECT 'NTKT_' + NTKTId, 'NTKT ' + NTKTPhase, 'PO_' + POId FROM dbo.NTKT) UNION (SELECT 'DP_' + DPId, 'DP ' + DPId, 'PO_' + POId FROM dbo.DP) UNION (SELECT 'PL_' + PLId, 'PL ' + VNPTId + PLCheckMainLine, 'DP_' + DPId FROM dbo.PL) ORDER BY ContractId", txtsearch);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             DataTable table1 = new DataTable();
             table1.Columns.Add("ctlId");

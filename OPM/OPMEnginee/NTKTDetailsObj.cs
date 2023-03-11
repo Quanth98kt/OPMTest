@@ -9,7 +9,7 @@ namespace OPM.OPMEnginee
 {
     public class NTKTDetailsObj
     {
-        public int id { get; set; } = 0;
+        public string id { get; set; } = "X";
         public string NTKTId { get; set; } = "X";
         public string VNPTId { get; set; } = "X";
         public string SiteName { get; set; } = "X";
@@ -17,7 +17,7 @@ namespace OPM.OPMEnginee
         public double NTKTSparegoods { get; set; } = 0;
         public DateTime NTKTEdDate { get; set; } = DateTime.Now;
 
-        public NTKTDetailsObj( int id, string NTKTId, string VNPTId, string SiteName, double NTKTMainline, double NTKTSparegoods, DateTime NTKTEdDate)
+        public NTKTDetailsObj( string id, string NTKTId, string VNPTId, string SiteName, double NTKTMainline, double NTKTSparegoods, DateTime NTKTEdDate)
         {
             this.id = id;
             this.NTKTId = NTKTId;
@@ -30,7 +30,7 @@ namespace OPM.OPMEnginee
 
         public NTKTDetailsObj(DataRow row)
         {
-            id = (row["id"] == null || row["id"] == DBNull.Value) ? 0 : (int)row["id"];
+            id = (row["id"] == null || row["id"] == DBNull.Value) ? "X" : row["id"].ToString();
             NTKTId = row["NTKTId"].ToString();
             VNPTId = (row["VNPTId"] == null || row["VNPTId"] == DBNull.Value) ? "X" : row["VNPTId"].ToString();
             SiteName = (row["SiteName"] == null || row["SiteName"] == DBNull.Value) ? "X" : row["SiteName"].ToString();
@@ -46,13 +46,13 @@ namespace OPM.OPMEnginee
         public NTKTDetailsObj() { }
         public bool NTKTDetailsExist()
         {
-            string query = string.Format("SELECT * FROM dbo.NTKTDetails WHERE id = '{0}'");
+            string query = string.Format("SELECT * FROM dbo.NTKTDetails WHERE id = N'{0}'");
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
-        public static bool NTKTDetailsExist(int iD,string VNPTId)
+        public static bool NTKTDetailsExist(string iD,string VNPTId)
         {
-            string query = string.Format("SELECT * FROM dbo.NTKTDetails WHERE id = {0} and VNPTId = N'{1}'", iD, VNPTId);
+            string query = string.Format("SELECT * FROM dbo.NTKTDetails WHERE id = N'{0}' and VNPTId = N'{1}'", iD, VNPTId);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
@@ -78,15 +78,15 @@ namespace OPM.OPMEnginee
             }
             return list;
         }
-        public int NTKTDetailsUpdate(int id)
+        public int NTKTDetailsUpdate(string id)
         {
-            string query = string.Format("UPDATE dbo.NTKTDetails SET NTKTId = N'{1}', VNPTId = N'{2}', NTKTMainline = N'{3}', NTKTSparegoods = N'{4}', NTKTEdDate= N'{5}' WHERE id = '{0}'", id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
+            string query = string.Format("UPDATE dbo.NTKTDetails SET NTKTId = N'{1}', VNPTId = N'{2}', NTKTMainline = N'{3}', NTKTSparegoods = N'{4}', NTKTEdDate= N'{5}' WHERE id = N'{0}'", id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
             return OPMDBHandler.ExecuteNonQuery(query);
         }
-        public int NTKTDetailsInsert(int Id)
+        public int NTKTDetailsInsert(string Id, string VNPTId)
         {
             if (NTKTDetailsObj.NTKTDetailsExist(Id, VNPTId)) return 0;
-            string query = string.Format(@"INSERT INTO dbo.NTKTDetails(NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')", NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
+            string query = string.Format(@"INSERT INTO dbo.NTKTDetails (id,NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", Id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
             return OPMDBHandler.ExecuteNonQuery(query);
         }
         public int NTKTDetailsInsert()
@@ -95,9 +95,9 @@ namespace OPM.OPMEnginee
             string query = string.Format(@"INSERT INTO dbo.NTKTDetails(NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')", NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
             return OPMDBHandler.ExecuteNonQuery(query);
         }
-        public static void NTKTDetailDelete(int id)
+        public static void NTKTDetailDelete(string id)
         {
-            string query = string.Format("DELETE FROM dbo.NTKTDetails WHERE id = '{0}'", id);
+            string query = string.Format("DELETE FROM dbo.NTKTDetails WHERE id = N'{0}'", id);
             OPMDBHandler.ExecuteNonQuery(query);
 
         }

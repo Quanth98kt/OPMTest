@@ -45,10 +45,19 @@ namespace OPM.GUI
                 (Tag as OPMDASHBOARDA).Pls.Insert(0, (Tag as OPMDASHBOARDA).Pl);
             }
             dtgDP.DataSource = (Tag as OPMDASHBOARDA).Pls;
+
+            foreach (DataGridViewColumn Column in dtgDP.Columns)
+            {
+                Column.Visible = false;
+            }
+
             dtgDP.Columns["PLId"].HeaderText = @"ID";
-            dtgDP.Columns["PLId"].Visible = false;
-            dtgDP.Columns["DPId"].Visible = false;
+            dtgDP.Columns["VNPTId"].Visible = true;
+            dtgDP.Columns["PLCheckMainLine"].Visible = true;
+            dtgDP.Columns["PLCheckMainLine"].Width = 170;
+            dtgDP.Columns["PLQuantity"].Visible = true;
             dtgDP.Columns["VNPTId"].HeaderText = @"Mã tỉnh";
+            dtgDP.Columns["PLCheckMainLine"].HeaderText = @"Loại hàng";
             dtgDP.Columns["PLQuantity"].HeaderText = @"Số lượng";
             foreach (DataGridViewRow row in dtgDP.Rows)
             {
@@ -106,7 +115,8 @@ namespace OPM.GUI
                 pl.VNPTId = (Tag as OPMDASHBOARDA).Sites[0].SiteId;
                 //pl.PLId = pl.DPId + "_" + pl.VNPTId;
                 pl.PLQuantity = (Tag as OPMDASHBOARDA).Dp.DPQuantity1 - PLObj.PLGetTotalQuantityByDPIddAndNotEqualVNPTId((Tag as OPMDASHBOARDA).Dp.DPId, (Tag as OPMDASHBOARDA).Sites[0].SiteId);
-                pl.PLInsert(pl.DPId + "_" + pl.VNPTId);
+                pl.PLInsert(pl.DPId + "_" + pl.VNPTId + " HC", @" HANG CHINH");
+                pl.PLInsert(pl.DPId + "_" + pl.VNPTId + " HDP", @" HANG DU PHONG");
                 (Tag as OPMDASHBOARDA).Sites = SiteObj.SiteGetListProvince((Tag as OPMDASHBOARDA).Po.POId, (Tag as OPMDASHBOARDA).Dp.DPId);
                 a = false;
             }
@@ -195,7 +205,8 @@ namespace OPM.GUI
             pl.VNPTId = (comboBoxVNPTId.SelectedItem as SiteObj).SiteId;
             //pl.PLId = pl.DPId + "_" + pl.VNPTId;
             pl.PLQuantity = int.Parse(textBoxPLQuantity.Text.Trim());
-            pl.PLInsert(pl.DPId + "_" + pl.VNPTId);
+            pl.PLInsert(pl.DPId + "_" + pl.VNPTId + " HC", @" HANG CHINH");
+            pl.PLInsert(pl.DPId + "_" + pl.VNPTId + " HDP", @" HANG DU PHONG");
             //txtRemainingPOGoodsQuantity.Text = (deliveryPlan.POGoodsQuantity - DeliveryPlanObj.DeliveryPlanTotalQuantityByPOIdAndVNPTIdDetail(deliveryPlan.POId)).ToString();
             LoadData(pl.VNPTId);
             (Tag as OPMDASHBOARDA).Load_treeview();

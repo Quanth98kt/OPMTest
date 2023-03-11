@@ -38,7 +38,7 @@ namespace OPM.GUI
             txtContractName.Text = contract.ContractName;
             txtAccoutingCode.Text = contract.ContractAccoutingCode;
             dtpContractCreatedDate.Value = contract.ContractCreatedDate;
-            dtpContractDeadline.Value = dtpContractCreatedDate.Value.AddDays(Convert.ToInt32(contract.ContractPeriod));
+            dtpContractDeadline.Value = contract.ContractDeadline;
             txtType.Text = contract.ContractType;
             txtDuration.Text = contract.ContractPeriod.ToString();
             dtpContractValidityDate.Value = contract.ContractValidityDate;
@@ -106,14 +106,6 @@ namespace OPM.GUI
                     dtpContractDeadline.Value = dtpContractValidityDate.Value.AddDays(double.Parse(txtDuration.Text.Trim()));
                     (Tag as OPMDASHBOARDA).Contract.ContractDeadline = dtpContractDeadline.Value;
                 }
-                 
-                DayOfWeek day = DateTime.Now.DayOfWeek;
-                day = dtpContractDeadline.Value.DayOfWeek;
-
-                if ((day == DayOfWeek.Saturday) || (day == DayOfWeek.Sunday))
-                {
-                    MessageBox.Show("Ngày hiệu lực của hợp đồng là ngày cuối tuần!");
-                }
             }
             catch (Exception)
             {
@@ -163,7 +155,30 @@ namespace OPM.GUI
             }
             if (string.IsNullOrEmpty(txtType.Text.Trim()))
             {
-                MessageBox.Show("Loại HĐ đang trống, bạn muốn tiếp tục lưu?","Thông báo",MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Loại HĐ đang trống, bạn muốn tiếp tục lưu?","Thông báo",MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            
+            DayOfWeek day = dtpContractDeadline.Value.DayOfWeek;
+
+            if ((day == DayOfWeek.Saturday) || (day == DayOfWeek.Sunday))
+            {
+                DialogResult dialogResult = MessageBox.Show("Ngày hiệu lực của hợp đồng là ngày cuối tuần, bạn muốn tiếp tục lưu?", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
             }
             (Tag as OPMDASHBOARDA).SaveSQLByNodeName();
         }
@@ -336,11 +351,7 @@ namespace OPM.GUI
 
         private void dtpContractCreatedDate_ValueChanged(object sender, EventArgs e)
         {
-            dtpContractValidityDate.Value = dtpContractCreatedDate.Value.AddDays(2);
-            dateTimePickerContractReportOfConpletedVolumeDate.Value = dtpContractCreatedDate.Value.AddDays(2);
-            dateTimePickerContractLiquidationRecordsDate.Value = dtpContractCreatedDate.Value.AddDays(2);
-            dtpGuaranteeDateCreated.Value = dtpContractCreatedDate.Value;
-            dtpGuaranteeDeadline.Value = dtpContractCreatedDate.Value.AddDays(2);
+            (Tag as OPMDASHBOARDA).Contract.ContractCreatedDate = dtpContractCreatedDate.Value;
         }
 
         private void btnNotification_Click(object sender, EventArgs e)

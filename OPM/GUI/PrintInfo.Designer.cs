@@ -43,12 +43,10 @@ namespace OPM.GUI
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnArrange = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvName)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvName
@@ -60,7 +58,7 @@ namespace OPM.GUI
             this.dgvName.Name = "dgvName";
             this.dgvName.RowHeadersWidth = 50;
             this.dgvName.RowTemplate.Height = 25;
-            this.dgvName.Size = new System.Drawing.Size(666, 280);
+            this.dgvName.Size = new System.Drawing.Size(666, 630);
             this.dgvName.TabIndex = 0;
             // 
             // FileNames
@@ -208,21 +206,11 @@ namespace OPM.GUI
             this.btnArrange.UseVisualStyleBackColor = false;
             this.btnArrange.Click += new System.EventHandler(this.btnArrange_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 317);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(666, 179);
-            this.dataGridView1.TabIndex = 8;
-            // 
             // PrintInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 645);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
@@ -236,7 +224,6 @@ namespace OPM.GUI
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +245,5 @@ namespace OPM.GUI
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnArrange;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

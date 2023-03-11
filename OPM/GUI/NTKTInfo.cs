@@ -263,13 +263,13 @@ namespace OPM.GUI
                 NTKTSparegoods = int.Parse(txtNTKTSparegoods.Text.Trim()),
                 NTKTEdDate = dtpNTKTEdDate.Value
             };
-            if (!NTKTDetailsObj.NTKTDetailsExist(int.Parse(tbID.Text.Trim()), (ccbVNPTId.SelectedItem as SiteObj).SiteId))
+            if (!NTKTDetailsObj.NTKTDetailsExist(tbID.Text.Trim(), (ccbVNPTId.SelectedItem as SiteObj).SiteId))
             {
-                NTKTDetail.NTKTDetailsInsert();
+                NTKTDetail.NTKTDetailsInsert((Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_" + (ccbVNPTId.SelectedItem as SiteObj).SiteId, (ccbVNPTId.SelectedItem as SiteObj).SiteId);
             }
             else
             {
-                NTKTDetail.NTKTDetailsUpdate(int.Parse(tbID.Text.Trim()));
+                NTKTDetail.NTKTDetailsUpdate(tbID.Text.Trim());
             }
 
             NTKTDetailsObj NTKTdt = new NTKTDetailsObj();
@@ -303,7 +303,7 @@ namespace OPM.GUI
             DialogResult dialogResult = MessageBox.Show(string.Format("Bạn có chắc muốn xóa NTKT cho {0}", (ccbVNPTId.SelectedItem as SiteObj).SiteId), "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                NTKTDetailsObj.NTKTDetailDelete(int.Parse(tbID.Text.Trim()));
+                NTKTDetailsObj.NTKTDetailDelete(tbID.Text.Trim());
                 MessageBox.Show("Bạn đã xóa thành công!");
             }
             (Tag as OPMDASHBOARDA).Load_treeview();
@@ -362,8 +362,11 @@ namespace OPM.GUI
                                 VNPTId += SiteObj.VNPT_ID(plTable.Rows[i].ItemArray[1].ToString()).ToString();
                             }
 
-                            string query = string.Format("INSERT INTO dbo.NTKTDetails(NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')", NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
-                            OPMDBHandler.ExecuteNonQuery(query);
+                            if (!NTKTDetailsObj.NTKTDetailsExist((Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_" + VNPTId, VNPTId))
+                            {
+                                string query = string.Format("INSERT INTO dbo.NTKTDetails(id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", (Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_"+ VNPTId, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
+                                OPMDBHandler.ExecuteNonQuery(query);
+                            }
                         }
                     }
                     catch(Exception ex)
