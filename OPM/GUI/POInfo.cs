@@ -526,5 +526,12 @@ namespace OPM.GUI
                 MessageBox.Show("Ngày giao hàng của PO phải trước ngày thời hạn thực đơn hàng!");
             }
         }
+
+        private void btnPLGH_Click(object sender, EventArgs e)
+        {
+            PLGiaoHang f = new PLGiaoHang();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -317,70 +317,77 @@ namespace OPM.GUI
         private OpenFileDialog ofd;
         private void btnImportNTKTDt_Click(object sender, EventArgs e)
         {
-            int val1 = (int.Parse((Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString()) + 3) * 3 - 1;
-            int val2 = val1 + 1;
-            int val3 = val1 + 2;
-
-            List<NTKTDetailsObj> userList = new List<NTKTDetailsObj>();
-
-            ofd = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel Workbook 97-2003|*.xls", ValidateNames = true };
-
-            if (ofd.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (!NTKTDetailsObj.NTKTDetailsByNTKTId((Tag as OPMDASHBOARDA).Ntkt.NTKTId))
+                int val1 = (int.Parse((Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString()) + 3) * 3 - 1;
+                int val2 = val1 + 1;
+                int val3 = val1 + 2;
+
+                List<NTKTDetailsObj> userList = new List<NTKTDetailsObj>();
+
+                ofd = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel Workbook 97-2003|*.xls", ValidateNames = true };
+
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    tb_path.Text = System.IO.Path.GetFileNameWithoutExtension(ofd.FileName);
-
-                    string path = ofd.FileName;
-                    //string substr = path[^4..];
-
-                    DataTable plTable = OpmExcelHandler.DataTableNTKTDetailsFromExcelFile(path, 1, 2, 1);
-
-                    int pLTableCount = plTable.Rows.Count;
-
-                    string NTKTId = (Tag as OPMDASHBOARDA).Ntkt.NTKTId;
-
-                    try
+                    if (!NTKTDetailsObj.NTKTDetailsByNTKTId((Tag as OPMDASHBOARDA).Ntkt.NTKTId))
                     {
-                        for (int i = 0; i < pLTableCount; i++)
+                        tb_path.Text = System.IO.Path.GetFileNameWithoutExtension(ofd.FileName);
+
+                        string path = ofd.FileName;
+                        //string substr = path[^4..];
+
+                        DataTable plTable = OpmExcelHandler.DataTableNTKTDetailsFromExcelFile(path, 1, 2, 1);
+
+                        int pLTableCount = plTable.Rows.Count;
+
+                        string NTKTId = (Tag as OPMDASHBOARDA).Ntkt.NTKTId;
+
+                        try
                         {
-                            int tem = 1;
-                            int min = Math.Min(tem, pLTableCount);
-
-                            string SiteName = (plTable.Rows[i].ItemArray[1].ToString() != null) ? "VNPT Name" : plTable.Rows[i].ItemArray[1].ToString();
-                            double NTKTMainline = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val1].ToString())) ? 0 : int.Parse(plTable.Rows[i].ItemArray[val1].ToString());
-                            double NTKTSparegoods = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val2].ToString())) ? 0 : int.Parse(plTable.Rows[i].ItemArray[val2].ToString());
-                            DateTime NTKTEdDate = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val3].ToString())) ? DateTime.Now : DateTime.Parse(plTable.Rows[i].ItemArray[val3].ToString());
-                            string VNPTId = SiteObj.VNPT_ID(plTable.Rows[i].ItemArray[1].ToString()).ToString();
-
-                            for (int j = tem; j < min; j++)
+                            for (int i = 0; i < pLTableCount; i++)
                             {
-                                SiteName += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[1].ToString())) ? "VNPT Name" : plTable.Rows[j].ItemArray[1].ToString();
-                                NTKTMainline += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val1].ToString())) ? 0 : int.Parse(plTable.Rows[j].ItemArray[val1].ToString());
-                                NTKTSparegoods += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val2].ToString())) ? 0 : int.Parse(plTable.Rows[j].ItemArray[val2].ToString());
-                                NTKTEdDate = (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val3].ToString())) ? DateTime.Now : DateTime.Parse(plTable.Rows[i].ItemArray[val3].ToString());
-                                VNPTId += SiteObj.VNPT_ID(plTable.Rows[i].ItemArray[1].ToString()).ToString();
-                            }
+                                int tem = 1;
+                                int min = Math.Min(tem, pLTableCount);
 
-                            if (!NTKTDetailsObj.NTKTDetailsExist((Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_" + VNPTId, VNPTId))
-                            {
-                                string query = string.Format("INSERT INTO dbo.NTKTDetails(id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", (Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_"+ VNPTId, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
-                                OPMDBHandler.ExecuteNonQuery(query);
+                                string SiteName = (plTable.Rows[i].ItemArray[1].ToString() != null) ? "VNPT Name" : plTable.Rows[i].ItemArray[1].ToString();
+                                double NTKTMainline = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val1].ToString())) ? 0 : int.Parse(plTable.Rows[i].ItemArray[val1].ToString());
+                                double NTKTSparegoods = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val2].ToString())) ? 0 : int.Parse(plTable.Rows[i].ItemArray[val2].ToString());
+                                DateTime NTKTEdDate = (string.IsNullOrEmpty(plTable.Rows[i].ItemArray[val3].ToString())) ? DateTime.Now : DateTime.Parse(plTable.Rows[i].ItemArray[val3].ToString());
+                                string VNPTId = SiteObj.VNPT_ID(plTable.Rows[i].ItemArray[1].ToString()).ToString();
+
+                                for (int j = tem; j < min; j++)
+                                {
+                                    SiteName += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[1].ToString())) ? "VNPT Name" : plTable.Rows[j].ItemArray[1].ToString();
+                                    NTKTMainline += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val1].ToString())) ? 0 : int.Parse(plTable.Rows[j].ItemArray[val1].ToString());
+                                    NTKTSparegoods += (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val2].ToString())) ? 0 : int.Parse(plTable.Rows[j].ItemArray[val2].ToString());
+                                    NTKTEdDate = (string.IsNullOrEmpty(plTable.Rows[j].ItemArray[val3].ToString())) ? DateTime.Now : DateTime.Parse(plTable.Rows[i].ItemArray[val3].ToString());
+                                    VNPTId += SiteObj.VNPT_ID(plTable.Rows[i].ItemArray[1].ToString()).ToString();
+                                }
+
+                                if (!NTKTDetailsObj.NTKTDetailsExist((Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_" + VNPTId, VNPTId))
+                                {
+                                    string query = string.Format("INSERT INTO dbo.NTKTDetails(id, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate)VALUES(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", (Tag as OPMDASHBOARDA).Ntkt.NTKTId + "_" + (Tag as OPMDASHBOARDA).Ntkt.NTKTPhase.ToString() + "_" + VNPTId, NTKTId, VNPTId, NTKTMainline, NTKTSparegoods, NTKTEdDate);
+                                    OPMDBHandler.ExecuteNonQuery(query);
+                                }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.StackTrace, "Cảnh báo!");
+                        }
+
+                        LoadTodtgNTKT(NTKTId);
+                        AddNTKTBinding();
                     }
-                    catch(Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.StackTrace, "Cảnh báo!");
+                        MessageBox.Show("NTKT cho các tỉnh đã tồn tại, nếu bạn muốn thay đổi thì xoá NTKT này đi và tạo lại mới!", "Cảnh báo!");
                     }
-                    
-                    LoadTodtgNTKT(NTKTId);
-                    AddNTKTBinding();
                 }
-                else
-                {
-                    MessageBox.Show("NTKT cho các tỉnh đã tồn tại, nếu bạn muốn thay đổi thì xoá NTKT này đi và tạo lại mới!", "Cảnh báo!");
-                }
+            }
+            catch
+            {
+                MessageBox.Show("Bạn chưa tạo đợt NTKT!", "Cảnh báo!");
             }
         }
     }

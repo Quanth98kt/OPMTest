@@ -40,6 +40,9 @@
     <Compile Update="GUI\PLCreatDocInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\PLGiaoHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\PLInfo.cs">
       <SubType>Form</SubType>
     </Compile>

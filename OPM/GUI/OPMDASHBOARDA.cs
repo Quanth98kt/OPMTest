@@ -316,7 +316,7 @@ namespace OPM.GUI
                 case "PL":
                     if (!PLObj.PLExist(temp[1]))
                     {
-                        if (Pl.PLInsert(CurrentNodeId, @" HANG CHINH") > 0)
+                        if (Pl.PLInsert(CurrentNodeId, 1) > 0)
                         {
                             MessageBox.Show("Tạo mới thành công PL số " + CurrentNodeId);
                             CurrentNodeName = "PL_" + CurrentNodeId;

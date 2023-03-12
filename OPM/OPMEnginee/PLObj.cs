@@ -18,7 +18,7 @@ namespace OPM.OPMEnginee
             set
             {
                 pLId = value;
-                string query = string.Format("SELECT * FROM dbo.PL WHERE PLId = '{0}'", value);
+                string query = string.Format("SELECT *, IIF(PLCheckMainLine = 1, N'Hàng chính', N'Hàng dự phòng') as PLCheckMainLine_ FROM dbo.PL WHERE PLId = '{0}'", value);
                 try
                 {
                     DataTable table = OPMDBHandler.ExecuteQuery(query);
@@ -37,7 +37,8 @@ namespace OPM.OPMEnginee
                         PLQualityInspectionCertificateInFactoryDate = (row["PLQualityInspectionCertificateInFactoryDate"] == null || row["PLQualityInspectionCertificateInFactoryDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["PLQualityInspectionCertificateInFactoryDate"];
                         PLQualityInspectionCertificateDate = (row["PLQualityInspectionCertificateDate"] == null || row["PLQualityInspectionCertificateDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["PLQualityInspectionCertificateDate"];
                         PLReportForDeliveryNumber = (row["PLReportForDeliveryNumber"] == null || row["PLReportForDeliveryNumber"] == DBNull.Value) ? "BBBG" : row["PLReportForDeliveryNumber"].ToString();
-                        PLCheckMainLine = (row["PLCheckMainLine"] == null || row["PLCheckMainLine"] == DBNull.Value) ? "" : row["PLCheckMainLine"].ToString();
+                        PLCheckMainLine = (row["PLCheckMainLine"] == null || row["PLCheckMainLine"] == DBNull.Value) ? 1 : (int)row["PLCheckMainLine"];
+                        PLCheckMainLine_ = (row["PLCheckMainLine_"] == null || row["PLCheckMainLine_"] == DBNull.Value) ? "" : row["PLCheckMainLine_"].ToString();
                     }
                 }
                 catch (Exception e)
@@ -57,9 +58,10 @@ namespace OPM.OPMEnginee
         public DateTime PLQualityInspectionCertificateInFactoryDate { get; set; } = DateTime.Now;
         public DateTime PLQualityInspectionCertificateDate { get; set; } = DateTime.Now;
         public string PLReportForDeliveryNumber { get; set; } = "BBBG";
-        public string PLCheckMainLine { get; set; } = "HANG CHINH";
+        public string PLCheckMainLine_ { get; set; } = "";
+        public int PLCheckMainLine { get; set; } = 1;
 
-        public PLObj(string PLId, string VNPTId, DateTime PLDate, int PLQuantity, double CaseQuantity, string PLDimension, string PLVolume, double PLNetWeight, double PLGrossWeight, string PLCheckMainLine)
+        public PLObj(string PLId, string VNPTId, DateTime PLDate, int PLQuantity, double CaseQuantity, string PLDimension, string PLVolume, double PLNetWeight, double PLGrossWeight, int PLCheckMainLine, string PLCheckMainLine_)
         {
             this.PLId = PLId;
             this.VNPTId = VNPTId; 
@@ -71,6 +73,7 @@ namespace OPM.OPMEnginee
             this.PLNetWeight = PLNetWeight;
             this.PLGrossWeight = PLGrossWeight;
             this.PLCheckMainLine = PLCheckMainLine;
+            this.PLCheckMainLine_ = PLCheckMainLine_;
         }
         public PLObj(DataRow row)
         {
@@ -87,7 +90,8 @@ namespace OPM.OPMEnginee
             PLQualityInspectionCertificateInFactoryDate = (row["PLQualityInspectionCertificateInFactoryDate"] == null || row["PLQualityInspectionCertificateInFactoryDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["PLQualityInspectionCertificateInFactoryDate"];
             PLQualityInspectionCertificateDate = (row["PLQualityInspectionCertificateDate"] == null || row["PLQualityInspectionCertificateDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["PLQualityInspectionCertificateDate"];
             PLReportForDeliveryNumber = (row["PLReportForDeliveryNumber"] == null || row["PLReportForDeliveryNumber"] == DBNull.Value) ? "BBBG" : row["PLReportForDeliveryNumber"].ToString();
-            PLCheckMainLine = (row["PLCheckMainLine"] == null || row["PLCheckMainLine"] == DBNull.Value) ? "" : row["PLCheckMainLine"].ToString();
+            PLCheckMainLine = (row["PLCheckMainLine"] == null || row["PLCheckMainLine"] == DBNull.Value) ? 1 : (int)row["PLCheckMainLine"];
+            PLCheckMainLine_ = (row["PLCheckMainLine_"] == null || row["PLCheckMainLine_"] == DBNull.Value) ? "" : row["PLCheckMainLine_"].ToString();
         }
         public PLObj(string PLId)
         {
@@ -96,13 +100,13 @@ namespace OPM.OPMEnginee
         public PLObj() { }
         public bool PLExist()
         {
-            string query = string.Format("SELECT * FROM dbo.PL WHERE PLId = '{0}'", PLId);
+            string query = string.Format("SELECT *, IIF(PLCheckMainLine = 1, N'Hàng chính', N'Hàng dự phòng') as PLCheckMainLine_ FROM dbo.PL WHERE PLId = '{0}'", PLId);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
         public static bool PLExist(string PLId)
         {
-            string query = string.Format("SELECT * FROM dbo.PL WHERE PLId = '{0}'", PLId);
+            string query = string.Format("SELECT *, IIF(PLCheckMainLine = 1, N'Hàng chính', N'Hàng dự phòng') as PLCheckMainLine_ FROM dbo.PL WHERE PLId = '{0}'", PLId);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
@@ -114,11 +118,18 @@ namespace OPM.OPMEnginee
             return OPMDBHandler.ExecuteNonQuery(query);
         }
 
-        public int PLInsert(string PLId, string PLCheckMainLine)
+        public int PLInsert(string PLId, int PLCheckMainLine)
         {
             if (PLObj.PLExist(PLId)) return 0;
             PLVolume = PLVolume.Replace(',', '.');
             string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.PL(PLId,DPId,VNPTId,PLDate,PLQuantity,CaseQuantity,PLDimension,PLVolume,PLNetWeight,PLGrossWeight,PLQualityInspectionCertificateInFactoryDate,PLQualityInspectionCertificateDate,PLReportForDeliveryNumber, PLCheckMainLine)VALUES('{0}','{1}', '{2}', '{3}', {4}, {5}, '{6}',{7}, {8}, {9},'{10}', '{11}', '{12}','{13}')", PLId, DPId, VNPTId, PLDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), PLQuantity, CaseQuantity, PLDimension, PLVolume, PLNetWeight, PLGrossWeight, PLQualityInspectionCertificateInFactoryDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), PLQualityInspectionCertificateDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), PLReportForDeliveryNumber, PLCheckMainLine);
+            return OPMDBHandler.ExecuteNonQuery(query);
+        }
+        public int PLInsert_(string PLId, int PLCheckMainLine)
+        {
+            if (PLObj.PLExist(PLId)) return 0;
+            PLVolume = PLVolume.Replace(',', '.');
+            string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.PL(PLId,DPId,VNPTId,PLDate,PLQuantity,CaseQuantity,PLDimension,PLVolume,PLNetWeight,PLGrossWeight,PLQualityInspectionCertificateInFactoryDate,PLQualityInspectionCertificateDate,PLReportForDeliveryNumber, PLCheckMainLine)VALUES('{0}','{1}', '{2}', '{3}', {4}, {5}, '{6}',{7}, {8}, {9},'{10}', '{11}', '{12}','{13}')", PLId, DPId, VNPTId, PLDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), Math.Round(PLQuantity*0.02), CaseQuantity, PLDimension, PLVolume, PLNetWeight, PLGrossWeight, PLQualityInspectionCertificateInFactoryDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), PLQualityInspectionCertificateDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), PLReportForDeliveryNumber, PLCheckMainLine);
             return OPMDBHandler.ExecuteNonQuery(query);
         }
         public int PLUpdate()
@@ -147,7 +158,7 @@ namespace OPM.OPMEnginee
         }
         public static DataTable PLGetTableByDPId(string DPId)
         {
-            string query = string.Format("SELECT * FROM dbo.PL Where DPId = '{0}' Order By VNPTId", DPId);
+            string query = string.Format("SELECT *, IIF(PLCheckMainLine = 1, N'Hàng chính', N'Hàng dự phòng') as PLCheckMainLine_ FROM dbo.PL Where DPId = '{0}' Order By VNPTId", DPId);
             return OPMDBHandler.ExecuteQuery(query);
         }
         public static List<PLObj> PLGetListByDPId(string DPId)
@@ -177,7 +188,7 @@ namespace OPM.OPMEnginee
         }
         public static int PLGetTotalQuantityByDPIddAndNotEqualVNPTId(string DPId, string VNPTId)
         {
-            string query = string.Format(@"SELECT SUM(PL.PLQuantity) FROM dbo.PL WHERE DPId  = '{0}' AND VNPTId != '{1}'", DPId, VNPTId);
+            string query = string.Format(@"SELECT SUM(PL.PLQuantity) FROM dbo.PL WHERE DPId  = '{0}' AND VNPTId != '{1}' and PLCheckMainLine = 1", DPId, VNPTId);
             var tem1 = OPMDBHandler.ExecuteScalar(query);
             int tem = (tem1 == null || tem1 == DBNull.Value) ? 0 : (int)tem1;
             return tem;
