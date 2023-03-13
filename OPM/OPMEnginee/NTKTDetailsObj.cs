@@ -99,7 +99,6 @@ namespace OPM.OPMEnginee
         {
             string query = string.Format("DELETE FROM dbo.NTKTDetails WHERE id = N'{0}'", id);
             OPMDBHandler.ExecuteNonQuery(query);
-
         }
         public static DataTable SUM( string VNPTId)
         {

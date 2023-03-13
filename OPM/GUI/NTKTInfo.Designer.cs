@@ -531,6 +531,7 @@ namespace OPM.GUI
             this.dtpNTKTEdDate.Name = "dtpNTKTEdDate";
             this.dtpNTKTEdDate.Size = new System.Drawing.Size(279, 33);
             this.dtpNTKTEdDate.TabIndex = 32;
+            this.dtpNTKTEdDate.ValueChanged += new System.EventHandler(this.dtpNTKTEdDate_ValueChanged);
             // 
             // label20
             // 

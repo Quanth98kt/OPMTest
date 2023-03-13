@@ -2,6 +2,7 @@
 using OPM.ExcelHandler;
 using OPM.OPMEnginee;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
@@ -529,9 +530,87 @@ namespace OPM.GUI
 
         private void btnPLGH_Click(object sender, EventArgs e)
         {
-            PLGiaoHang f = new PLGiaoHang();
+            DeliveryAddendumInfo f = new DeliveryAddendumInfo();
+            f.Message = (Tag as OPMDASHBOARDA).Po.POId;
             f.ShowDialog();
             this.Show();
+        }
+
+        FolderBrowserDialog fbd = new FolderBrowserDialog();
+        private void btnArrange_Click(object sender, EventArgs e)
+        {
+            SiteObj.SiteName_NonUnicode();
+            DataTable table = SiteObj.SiteName_NonUnicode((Tag as OPMDASHBOARDA).Po.POId);
+            DataRow row1 = table.NewRow();
+
+            try
+            {
+
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+
+                {
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+
+                    List<string> list = new List<string>(files);
+
+                    // Tạo Folder Hàng Chính, Folder Hàng dự phòng
+                    string pathFolder = System.IO.Directory.GetParent(fbd.SelectedPath).ToString();
+                    DirectoryInfo directory_HangChinh = new DirectoryInfo(pathFolder + @"\PL HANG CHINH");
+                    DirectoryInfo directory_HangDuPhong = new DirectoryInfo(pathFolder + @"\PL HANG DU PHONG");
+                    if (!directory_HangChinh.Exists)
+                    {
+                        directory_HangChinh.Create();
+                    }
+                    else
+                    {
+                        MessageBox.Show(String.Format("Đã tồn tại Folder PL HANG CHINH tại {0}.", pathFolder));
+                        return;
+                    }
+                    if (!directory_HangDuPhong.Exists)
+                    {
+                        directory_HangDuPhong.Create();
+                    }
+                    else
+                    {
+                        MessageBox.Show(String.Format("Đã tồn tại Folder PL HANG DU PHONG tại {0}.", pathFolder));
+                        return;
+                    }
+
+                    //Check
+                    foreach (string item in list)
+                    {
+                        //Datagridview
+                        string Filename = Path.GetFileName(item);
+
+                        foreach (DataRow dataRow in table.Rows)
+                        {
+                            //this.dgvName.Rows.Add(dataRow[0]);
+                            int index_TenTinh = Filename.IndexOf((string)dataRow[0]);
+                            int index_2Percent = Filename.IndexOf("2%");
+                            if (index_TenTinh >= 0 && index_2Percent < 0)
+                            {
+                                DirectoryInfo directory_HangChinh_Tinh = new DirectoryInfo(pathFolder + @"\PL HANG CHINH" + @"\" + (int)dataRow[1]+ @" " + (string)dataRow[0]);
+                                directory_HangChinh_Tinh.Create();
+                                string sourceFile = System.IO.Path.Combine(pathFolder + @"\PL HANG CHINH" + @"\" + (int)dataRow[1] + @" " + (string)dataRow[0], Filename);
+                                //string destFile = System.IO.Path.Combine(targetPath, fileName);
+                                File.Copy(item.ToString(), pathFolder + @"\PL HANG CHINH" + @"\" + (int)dataRow[1] + @" " + (string)dataRow[0] + @"\" + Filename, true);
+                            }
+                            if (index_TenTinh >= 0 && index_2Percent >= 0)
+                            {
+                                DirectoryInfo directory_HangDuPhong_Tinh = new DirectoryInfo(pathFolder + @"\PL HANG DU PHONG" + @"\" + (int)dataRow[1] + @" " + (string)dataRow[0]);
+                                directory_HangDuPhong_Tinh.Create();
+                                File.Copy(item, pathFolder + @"\PL HANG DU PHONG" + @"\" + (int)dataRow[1] + @" " + (string)dataRow[0] + @"\" + Filename, true);
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show(er.Message);
+            }
         }
     }
 }

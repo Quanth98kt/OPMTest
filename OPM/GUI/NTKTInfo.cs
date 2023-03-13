@@ -297,7 +297,10 @@ namespace OPM.GUI
                     MessageBox.Show("Nhập đúng NTKTQuantity dạng số!");
                 }
         }
-
+        private void dtpNTKTEdDate_ValueChanged(object sender, EventArgs e)
+        {
+            (Tag as OPMDASHBOARDA).NTKTDt.NTKTEdDate = dtpNTKTEdDate.Value;
+        }
         private void btnDeleteNTKTDetail_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show(string.Format("Bạn có chắc muốn xóa NTKT cho {0}", (ccbVNPTId.SelectedItem as SiteObj).SiteId), "Thông báo", MessageBoxButtons.YesNo);
@@ -390,5 +393,7 @@ namespace OPM.GUI
                 MessageBox.Show("Bạn chưa tạo đợt NTKT!", "Cảnh báo!");
             }
         }
+
+        
     }
 }

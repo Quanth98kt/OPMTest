@@ -1,7 +1,7 @@
 ﻿
 namespace OPM.GUI
 {
-    partial class PLGiaoHang
+    partial class DeliveryAddendumInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -29,51 +29,52 @@ namespace OPM.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtgNTKT = new System.Windows.Forms.DataGridView();
+            this.dtgAddendum = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbnSTT = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.tb_path = new System.Windows.Forms.TextBox();
             this.btnImportNTKTDt = new System.Windows.Forms.Button();
-            this.dtpNTKTEdDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEdDate = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.btnDeleteNTKTDetail = new System.Windows.Forms.Button();
             this.btnAddNTKTDetail = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtNTKTSparegoods = new System.Windows.Forms.TextBox();
+            this.txtSparegoods = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtNTKTMainline = new System.Windows.Forms.TextBox();
+            this.txtMainline = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.ccbVNPTId = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgNTKT)).BeginInit();
+            this.tbID = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAddendum)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dtgNTKT
+            // dtgAddendum
             // 
-            this.dtgNTKT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgNTKT.Location = new System.Drawing.Point(4, 1);
-            this.dtgNTKT.Name = "dtgNTKT";
-            this.dtgNTKT.RowTemplate.Height = 25;
-            this.dtgNTKT.Size = new System.Drawing.Size(1030, 798);
-            this.dtgNTKT.TabIndex = 28;
+            this.dtgAddendum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgAddendum.Location = new System.Drawing.Point(4, 1);
+            this.dtgAddendum.Name = "dtgAddendum";
+            this.dtgAddendum.RowTemplate.Height = 25;
+            this.dtgAddendum.Size = new System.Drawing.Size(1030, 798);
+            this.dtgAddendum.TabIndex = 28;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbnSTT);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.tb_path);
             this.groupBox1.Controls.Add(this.btnImportNTKTDt);
-            this.groupBox1.Controls.Add(this.dtpNTKTEdDate);
+            this.groupBox1.Controls.Add(this.dtpEdDate);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.btnDeleteNTKTDetail);
             this.groupBox1.Controls.Add(this.btnAddNTKTDetail);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.txtNTKTSparegoods);
+            this.groupBox1.Controls.Add(this.txtSparegoods);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.txtNTKTMainline);
+            this.groupBox1.Controls.Add(this.txtMainline);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.ccbVNPTId);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -82,7 +83,26 @@ namespace OPM.GUI
             this.groupBox1.Size = new System.Drawing.Size(317, 452);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NTKT cho các tỉnh";
+            this.groupBox1.Text = "Phụ lục giao hàng cho các tỉnh";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 21);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Số thứ tự";
+            // 
+            // tbnSTT
+            // 
+            this.tbnSTT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbnSTT.Location = new System.Drawing.Point(6, 59);
+            this.tbnSTT.Name = "tbnSTT";
+            this.tbnSTT.Size = new System.Drawing.Size(305, 29);
+            this.tbnSTT.TabIndex = 39;
+            this.tbnSTT.TextChanged += new System.EventHandler(this.tbnSTT_TextChanged);
             // 
             // label25
             // 
@@ -113,16 +133,18 @@ namespace OPM.GUI
             this.btnImportNTKTDt.TabIndex = 36;
             this.btnImportNTKTDt.Text = "Import";
             this.btnImportNTKTDt.UseVisualStyleBackColor = false;
+            this.btnImportNTKTDt.Click += new System.EventHandler(this.btnImportNTKTDt_Click);
             // 
-            // dtpNTKTEdDate
+            // dtpEdDate
             // 
-            this.dtpNTKTEdDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpNTKTEdDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtpNTKTEdDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNTKTEdDate.Location = new System.Drawing.Point(6, 283);
-            this.dtpNTKTEdDate.Name = "dtpNTKTEdDate";
-            this.dtpNTKTEdDate.Size = new System.Drawing.Size(305, 33);
-            this.dtpNTKTEdDate.TabIndex = 32;
+            this.dtpEdDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpEdDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dtpEdDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEdDate.Location = new System.Drawing.Point(6, 283);
+            this.dtpEdDate.Name = "dtpEdDate";
+            this.dtpEdDate.Size = new System.Drawing.Size(305, 33);
+            this.dtpEdDate.TabIndex = 32;
+            this.dtpEdDate.ValueChanged += new System.EventHandler(this.dtpEdDate_ValueChanged);
             // 
             // label20
             // 
@@ -144,6 +166,7 @@ namespace OPM.GUI
             this.btnDeleteNTKTDetail.TabIndex = 35;
             this.btnDeleteNTKTDetail.Text = "Delete";
             this.btnDeleteNTKTDetail.UseVisualStyleBackColor = false;
+            this.btnDeleteNTKTDetail.Click += new System.EventHandler(this.btnDeleteNTKTDetail_Click);
             // 
             // btnAddNTKTDetail
             // 
@@ -155,6 +178,7 @@ namespace OPM.GUI
             this.btnAddNTKTDetail.TabIndex = 34;
             this.btnAddNTKTDetail.Text = "Add";
             this.btnAddNTKTDetail.UseVisualStyleBackColor = false;
+            this.btnAddNTKTDetail.Click += new System.EventHandler(this.btnAddNTKTDetail_Click);
             // 
             // label15
             // 
@@ -166,13 +190,14 @@ namespace OPM.GUI
             this.label15.TabIndex = 33;
             this.label15.Text = "Số lượng hàng dự phòng (2%)";
             // 
-            // txtNTKTSparegoods
+            // txtSparegoods
             // 
-            this.txtNTKTSparegoods.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNTKTSparegoods.Location = new System.Drawing.Point(6, 227);
-            this.txtNTKTSparegoods.Name = "txtNTKTSparegoods";
-            this.txtNTKTSparegoods.Size = new System.Drawing.Size(305, 29);
-            this.txtNTKTSparegoods.TabIndex = 32;
+            this.txtSparegoods.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSparegoods.Location = new System.Drawing.Point(6, 227);
+            this.txtSparegoods.Name = "txtSparegoods";
+            this.txtSparegoods.Size = new System.Drawing.Size(305, 29);
+            this.txtSparegoods.TabIndex = 32;
+            this.txtSparegoods.TextChanged += new System.EventHandler(this.txtSparegoods_TextChanged);
             // 
             // label14
             // 
@@ -184,13 +209,14 @@ namespace OPM.GUI
             this.label14.TabIndex = 31;
             this.label14.Text = "Số lượng (hàng chính)";
             // 
-            // txtNTKTMainline
+            // txtMainline
             // 
-            this.txtNTKTMainline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNTKTMainline.Location = new System.Drawing.Point(6, 171);
-            this.txtNTKTMainline.Name = "txtNTKTMainline";
-            this.txtNTKTMainline.Size = new System.Drawing.Size(305, 29);
-            this.txtNTKTMainline.TabIndex = 30;
+            this.txtMainline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMainline.Location = new System.Drawing.Point(6, 171);
+            this.txtMainline.Name = "txtMainline";
+            this.txtMainline.Size = new System.Drawing.Size(305, 29);
+            this.txtMainline.TabIndex = 30;
+            this.txtMainline.TextChanged += new System.EventHandler(this.txtMainline_TextChanged);
             // 
             // label11
             // 
@@ -209,60 +235,56 @@ namespace OPM.GUI
             this.ccbVNPTId.Name = "ccbVNPTId";
             this.ccbVNPTId.Size = new System.Drawing.Size(305, 29);
             this.ccbVNPTId.TabIndex = 0;
+            this.ccbVNPTId.SelectedIndexChanged += new System.EventHandler(this.ccbVNPTId_SelectedIndexChanged);
             // 
-            // label1
+            // tbID
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 21);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Số thứ tự";
+            this.tbID.Enabled = false;
+            this.tbID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbID.Location = new System.Drawing.Point(1040, 770);
+            this.tbID.Name = "tbID";
+            this.tbID.Size = new System.Drawing.Size(0, 29);
+            this.tbID.TabIndex = 36;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(6, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 29);
-            this.textBox1.TabIndex = 39;
-            // 
-            // PLGiaoHang
+            // DeliveryAddendumInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 803);
+            this.Controls.Add(this.tbID);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dtgNTKT);
-            this.Name = "PLGiaoHang";
+            this.Controls.Add(this.dtgAddendum);
+            this.Name = "DeliveryAddendumInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phụ lục giao hàng";
-            ((System.ComponentModel.ISupportInitialize)(this.dtgNTKT)).EndInit();
+            this.Load += new System.EventHandler(this.DeliveryAddendumInfo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAddendum)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgNTKT;
+        private System.Windows.Forms.DataGridView dtgAddendum;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbnSTT;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox tb_path;
         private System.Windows.Forms.Button btnImportNTKTDt;
-        private System.Windows.Forms.DateTimePicker dtpNTKTEdDate;
+        private System.Windows.Forms.DateTimePicker dtpEdDate;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnDeleteNTKTDetail;
         private System.Windows.Forms.Button btnAddNTKTDetail;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtNTKTSparegoods;
+        private System.Windows.Forms.TextBox txtSparegoods;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtNTKTMainline;
+        private System.Windows.Forms.TextBox txtMainline;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox ccbVNPTId;
+        private System.Windows.Forms.TextBox tbID;
     }
 }

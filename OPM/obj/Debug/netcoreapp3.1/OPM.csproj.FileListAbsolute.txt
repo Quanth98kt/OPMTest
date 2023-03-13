@@ -375,4 +375,4 @@ D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.NotificationInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.SettingsInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.PrintInfo.resources
 D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.fLogin.resources
-D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.PLGiaoHang.resources
+D:\OPMTest\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.DeliveryAddendumInfo.resources

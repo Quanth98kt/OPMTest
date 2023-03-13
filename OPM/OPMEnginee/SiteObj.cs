@@ -258,5 +258,11 @@ namespace OPM.OPMEnginee
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table;
         }
+        public static DataTable SiteName_NonUnicode(string POId)
+        {
+            string query = string.Format("SELECT tb1.SiteName_NonUnicode, tb2.STT FROM dbo.Site AS tb1 JOIN dbo.DeliveryAddendum tb2 on tb1.SiteId = tb2.VNPTId WHERE tb2.POId = N'{0}'", POId);
+            DataTable table = OPMDBHandler.ExecuteQuery(query);
+            return table;
+        }
     }
 }

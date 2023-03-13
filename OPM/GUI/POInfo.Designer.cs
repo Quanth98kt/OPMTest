@@ -115,6 +115,7 @@ namespace OPM.GUI
             this.dateTimePickerPOInvoicingRequestDate = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
             this.btnPLGH = new System.Windows.Forms.Button();
+            this.btnArrange = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
@@ -152,7 +153,7 @@ namespace OPM.GUI
             // btnNewDP
             // 
             this.btnNewDP.BackColor = System.Drawing.Color.MistyRose;
-            this.btnNewDP.Location = new System.Drawing.Point(591, 818);
+            this.btnNewDP.Location = new System.Drawing.Point(515, 818);
             this.btnNewDP.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewDP.Name = "btnNewDP";
             this.btnNewDP.Size = new System.Drawing.Size(100, 65);
@@ -344,7 +345,7 @@ namespace OPM.GUI
             // btnNewNTKT
             // 
             this.btnNewNTKT.BackColor = System.Drawing.Color.MistyRose;
-            this.btnNewNTKT.Location = new System.Drawing.Point(449, 818);
+            this.btnNewNTKT.Location = new System.Drawing.Point(371, 818);
             this.btnNewNTKT.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewNTKT.Name = "btnNewNTKT";
             this.btnNewNTKT.Size = new System.Drawing.Size(100, 65);
@@ -356,7 +357,7 @@ namespace OPM.GUI
             // btnNewPO
             // 
             this.btnNewPO.BackColor = System.Drawing.Color.LightGreen;
-            this.btnNewPO.Location = new System.Drawing.Point(981, 776);
+            this.btnNewPO.Location = new System.Drawing.Point(991, 745);
             this.btnNewPO.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewPO.Name = "btnNewPO";
             this.btnNewPO.Size = new System.Drawing.Size(100, 65);
@@ -473,7 +474,7 @@ namespace OPM.GUI
             // btnDeliveryPlan
             // 
             this.btnDeliveryPlan.BackColor = System.Drawing.Color.MistyRose;
-            this.btnDeliveryPlan.Location = new System.Drawing.Point(305, 818);
+            this.btnDeliveryPlan.Location = new System.Drawing.Point(229, 818);
             this.btnDeliveryPlan.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeliveryPlan.Name = "btnDeliveryPlan";
             this.btnDeliveryPlan.Size = new System.Drawing.Size(100, 65);
@@ -586,7 +587,7 @@ namespace OPM.GUI
             // 
             this.btnBack.BackColor = System.Drawing.Color.Silver;
             this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBack.Location = new System.Drawing.Point(28, 776);
+            this.btnBack.Location = new System.Drawing.Point(30, 745);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 65);
@@ -999,7 +1000,7 @@ namespace OPM.GUI
             // btnPLGH
             // 
             this.btnPLGH.BackColor = System.Drawing.Color.MistyRose;
-            this.btnPLGH.Location = new System.Drawing.Point(741, 818);
+            this.btnPLGH.Location = new System.Drawing.Point(666, 818);
             this.btnPLGH.Margin = new System.Windows.Forms.Padding(4);
             this.btnPLGH.Name = "btnPLGH";
             this.btnPLGH.Size = new System.Drawing.Size(100, 65);
@@ -1008,12 +1009,25 @@ namespace OPM.GUI
             this.btnPLGH.UseVisualStyleBackColor = false;
             this.btnPLGH.Click += new System.EventHandler(this.btnPLGH_Click);
             // 
+            // btnArrange
+            // 
+            this.btnArrange.BackColor = System.Drawing.Color.MistyRose;
+            this.btnArrange.Location = new System.Drawing.Point(810, 818);
+            this.btnArrange.Margin = new System.Windows.Forms.Padding(4);
+            this.btnArrange.Name = "btnArrange";
+            this.btnArrange.Size = new System.Drawing.Size(100, 65);
+            this.btnArrange.TabIndex = 39;
+            this.btnArrange.Text = "Sắp xếp file PO";
+            this.btnArrange.UseVisualStyleBackColor = false;
+            this.btnArrange.Click += new System.EventHandler(this.btnArrange_Click);
+            // 
             // POInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1119, 888);
+            this.Controls.Add(this.btnArrange);
             this.Controls.Add(this.btnPLGH);
             this.Controls.Add(this.dtpPODefaultPerformDate);
             this.Controls.Add(this.label8);
@@ -1200,5 +1214,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.DateTimePicker dateTimePickerPOAdjustmentConfirmationDate;
         private System.Windows.Forms.Button btnPLGH;
+        private System.Windows.Forms.Button btnArrange;
     }
 }
